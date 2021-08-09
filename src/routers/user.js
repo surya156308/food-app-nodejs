@@ -10,7 +10,9 @@ const router = new express.Router();
 //     res.status(401).send(e);
 //   }
 // });
-
+router.get("/user", (req, res) => {
+  res.send("Hello");
+});
 router.post("/user", async (req, res) => {
   const user = new User(req.body);
   try {
