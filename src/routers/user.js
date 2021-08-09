@@ -37,7 +37,11 @@ module.exports = router;
 
 router.post("/user/login", async (req, res) => {
   try {
-    const user = User.findByCredentials(req.body.email, req.body.password);
+    const user = await User.findByCredentials(
+      req.body.email,
+      req.body.password
+    );
+
     const token = await user.generateAuthTokens();
     res.send({ user, token });
   } catch (error) {
